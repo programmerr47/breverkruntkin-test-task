@@ -4,15 +4,40 @@
     <style
         name="AppTheme"
         parent="Theme.AppCompat.Light.DarkActionBar">
+
         <item name="android:actionBarStyle">@style/CleverActionBar</item>
+        <item name="android:actionBarTabTextStyle">@style/CleverActionBarTabText</item>
+        <item name="android:actionMenuTextColor">@color/orange_pure</item>
+
         <item name="actionBarStyle">@style/CleverActionBar</item>
+        <item name="actionBarTabTextStyle">@style/CleverActionBarTabText</item>
+        <item name="actionMenuTextColor">@color/orange_pure</item>
+
     </style>
 
     <style
         name="CleverActionBar"
         parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-       <item name="android:background">@color/violet_moderate</item>
-       <item name="background">@style/CleverActionBar</item>
+
+        <item name="android:background">@color/violet_moderate</item>
+        <item name="android:icon">@drawable/ic_action_bar_logo</item>
+        <item name="android:titleTextStyle">@style/CleverActionBarTitleText</item>
+
+        <item name="background">@color/violet_moderate</item>
+        <item name="titleTextStyle">@style/CleverActionBarTitleText</item>
+
+    </style>
+
+    <style
+        name="CleverActionBarTitleText"
+        parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white_transparent_light</item>
+    </style>
+
+    <style
+        name="CleverActionBarTabText"
+        parent="Widget.AppCompat.ActionBar.TabText">
+        <item name="android:textColor">@color/white_transparent_light</item>
     </style>
 
 </resources>
