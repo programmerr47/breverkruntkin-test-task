@@ -1,20 +1,13 @@
-package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects;
+package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
 import org.xmlpull.v1.XmlPullParser;
-
-import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary.Description;
-import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary.FlightInfo;
-import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary.FlightPoint;
-import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary.Photo;
-import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary.Price;
-import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary.TripSummary;
 
 /**
  * @author Michael Spitsin
  * @since 2014-08-27
  */
 @SuppressWarnings("unused")
-public class Trip {
+public class TripSummary {
     public static final String TAG = "trip";
     //----------------------ATTRUBITES---------------------------//
     private static final String DURATION_ATTRIBUTE = "duration";
@@ -24,24 +17,19 @@ public class Trip {
     private static final String FLIGHT_TAG = "flight";
     private static final String PRICE_TAG = "price";
     private static final String DESCRIPTION_TAG = "description";
-    private static final String PHOTO_TAG = "photo";
 
     private String duration;
     private FlightPoint takeoff;
     private FlightPoint landing;
     private FlightInfo flight;
     private Price price;
-    private Description description;
-    private Photo photo;
 
-    private Trip(Builder builder) {
+    private TripSummary(Builder builder) {
         this.duration = builder.duration;
         this.takeoff = builder.takeoff;
         this.landing = builder.landing;
         this.flight = builder.flight;
         this.price = builder.price;
-        this.description = builder.description;
-        this.photo = builder.photo;
     }
 
     public String getDuration() {
@@ -64,32 +52,12 @@ public class Trip {
         return price;
     }
 
-    public Description getDescription() {
-        return description;
-    }
-
-    public Photo getPhoto() {
-        return photo;
-    }
-
     public static class Builder {
         private String duration;
         private FlightPoint takeoff;
         private FlightPoint landing;
         private FlightInfo flight;
         private Price price;
-        private Description description;
-        private Photo photo;
-
-        public Builder() {}
-
-        public Builder(TripSummary summary) {
-            this.duration = summary.getDuration();
-            this.takeoff = summary.getTakeoff();
-            this.landing = summary.getLanding();
-            this.flight = summary.getFlight();
-            this.price = summary.getPrice();
-        }
 
         public Builder setDuration(String duration) {
             this.duration = duration;
@@ -116,26 +84,16 @@ public class Trip {
             return this;
         }
 
-        public Builder setDescription(Description description) {
-            this.description = description;
-            return this;
-        }
-
-        public Builder setPhoto(Photo photo) {
-            this.photo = photo;
-            return this;
-        }
-
-        public Trip build() {
-            return new Trip(this);
+        public TripSummary build() {
+            return new TripSummary(this);
         }
     }
 
     /**
-     * Creates {@link Trip} object from its JSON Counterpart.
+     * Creates {@link TripSummary} object from its JSON Counterpart.
      *
      * @param parser - given XML parser with stream inside and placed on this object
-     * @return new instance of Trip or null, if json is null
+     * @return new instance of TripSummary or null, if json is null
      */
     public static FlightPoint getFromXml(XmlPullParser parser) {
         //TODO
