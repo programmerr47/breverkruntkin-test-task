@@ -1,6 +1,13 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.util.XmlUtils;
 
 /**
  * @author Michael Spitsin
@@ -90,13 +97,83 @@ public class TripSummary {
     }
 
     /**
-     * Creates {@link TripSummary} object from its JSON Counterpart.
+     * Creates {@link TripSummary} object from its XML Counterpart.
      *
      * @param parser - given XML parser with stream inside and placed on this object
-     * @return new instance of TripSummary or null, if json is null
+     * @return new instance of TripSummary or null, if xml is null
      */
-    public static FlightPoint getFromXml(XmlPullParser parser) {
-        //TODO
-        return null;
+    public static TripSummary getFromXml(XmlPullParser parser) {
+        if (parser == null) {
+            return null;
+        }
+
+        if (XmlUtils.isCorrect(parser, XmlPullParser.START_TAG, null, TAG)) {
+            Builder builder = new Builder()
+                    .setDuration(parser.getAttributeValue(null, DURATION_ATTRIBUTE));
+
+            try {
+                while(parser.next() != XmlPullParser.END_TAG) {
+                    if (parser.getEventType() != XmlPullParser.START_TAG) {
+                        continue;
+                    }
+
+                    if (TAKEOFF_TAG.equals(parser.getName())) {
+                        builder.setTakeoff(FlightPoint.getFromXml(parser, TAKEOFF_TAG));
+                    } else if (LANDING_TAG.equals(parser.getName())) {
+                        builder.setLanding(FlightPoint.getFromXml(parser, LANDING_TAG));
+                    } else if (FLIGHT_TAG.equals(parser.getName())) {
+                        builder.setFlight(FlightInfo.getFromXml(parser));
+                    } else if (PRICE_TAG.equals(parser.getName())) {
+                        builder.setPrice(Price.getFromXml(parser));
+                    } else {
+                        XmlUtils.skipTag(parser);
+                    }
+                }
+            } catch (XmlPullParserException ignored) {
+                ignored.printStackTrace();
+            } catch (IOException ignored) {
+                ignored.printStackTrace();
+            }
+
+            return builder.build();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Creates list of {@link TripSummary} objects from its XML Counterpart.
+     *
+     * @param parser - given XML parser with stream inside and placed on this object
+     * @return new instance of {@code List<TripSummary>} or null, if xml is null
+     */
+    public static List<TripSummary> getListFromXml(XmlPullParser parser, String containerTag) {
+        if (parser == null) {
+            return null;
+        }
+
+        List<TripSummary> trips = new ArrayList<TripSummary>();
+
+        if (XmlUtils.isCorrect(parser, XmlPullParser.START_TAG, null, containerTag)) {
+            try {
+                while (parser.next() != XmlPullParser.END_TAG) {
+                    if (parser.getEventType() != XmlPullParser.START_TAG) {
+                        continue;
+                    }
+
+                    if (TAG.equals(parser.getName())) {
+                        trips.add(getFromXml(parser));
+                    } else {
+                        XmlUtils.skipTag(parser);
+                    }
+                }
+            } catch (XmlPullParserException ignored) {
+                ignored.printStackTrace();
+            } catch (IOException ignored) {
+                ignored.printStackTrace();
+            }
+        }
+
+        return trips;
     }
 }

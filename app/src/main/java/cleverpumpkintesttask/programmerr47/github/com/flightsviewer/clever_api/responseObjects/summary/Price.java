@@ -2,6 +2,8 @@ package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.
 
 import org.xmlpull.v1.XmlPullParser;
 
+import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.util.XmlUtils;
+
 /**
  * @author Michael Spitsin
  * @since 2014-08-27
@@ -36,11 +38,26 @@ public class Price {
     /**
      * Creates {@link Price} object from its JSON Counterpart.
      *
-     * @param parser - given XML parser with stream inside and placed on this object
+     * @param parser given XML parser with stream inside and placed on this object
      * @return new instance of Price or null, if json is null
      */
     public static Price getFromXml(XmlPullParser parser) {
-        //TODO
-        return null;
+        if (parser == null) {
+            return null;
+        }
+
+        if (XmlUtils.isCorrect(parser, XmlPullParser.START_TAG, null, TAG)) {
+            Builder builder = new Builder();
+
+            double value = Double.parseDouble(XmlUtils.getText(parser));
+
+            if (XmlUtils.isCorrect(parser, XmlPullParser.END_TAG, null, TAG)) {
+                builder.setValue(value);
+            }
+
+            return builder.build();
+        } else {
+            return null;
+        }
     }
 }

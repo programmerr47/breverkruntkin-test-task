@@ -1,6 +1,11 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+
+import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.util.XmlUtils;
 
 /**
  * @author Michael Spitsin
@@ -38,11 +43,30 @@ public class Photo {
     /**
      * Creates {@link Photo} object from its JSON Counterpart.
      *
-     * @param parser - given XML parser with stream inside and placed on this object
+     * @param parser given XML parser with stream inside and placed on this object
      * @return new instance of Photo or null, if json is null
      */
     public static Photo getFromXml(XmlPullParser parser) {
-        //TODO
-        return null;
+        if (parser == null) {
+            return null;
+        }
+
+        if (XmlUtils.isCorrect(parser, XmlPullParser.START_TAG, null, TAG)) {
+            Builder builder = new Builder();
+
+            builder.setSource(parser.getAttributeValue(null, SRC_ATTRIBUTE));
+
+            try {
+                while(parser.next() != XmlPullParser.END_TAG);
+            } catch (XmlPullParserException ignored) {
+                ignored.printStackTrace();
+            } catch (IOException ignored) {
+                ignored.printStackTrace();
+            }
+
+            return builder.build();
+        } else {
+            return null;
+        }
     }
 }

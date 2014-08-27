@@ -1,6 +1,11 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+
+import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.util.XmlUtils;
 
 /**
  * @author Michae Spitsin
@@ -65,20 +70,32 @@ public class FlightPoint {
     /**
      * Creates {@link FlightPoint} object from its JSON Counterpart.
      *
-     * @param parser - given XML parser with stream inside and placed on this object
+     * @param parser given XML parser with stream inside and placed on this object
+     * @param tag required tag
      * @return new instance of FlightPoint or null, if json is null
      */
-    public static FlightPoint getFromXml(XmlPullParser parser) {
-        //TODO
-//        if (parser == null) {
-//            return null;
-//        }
-//
-//        return new Builder()
-//                .setTime(parser.)
-//                .setDate()
-//                .setCity()
-//                .build();
-        return null;
+    public static FlightPoint getFromXml(XmlPullParser parser, String tag) {
+        if (parser == null) {
+            return null;
+        }
+
+        if (XmlUtils.isCorrect(parser, XmlPullParser.START_TAG, null, tag)) {
+            Builder builder = new Builder()
+                    .setTime(parser.getAttributeValue(null, TIME_ATTRIBUTE))
+                    .setCity(parser.getAttributeValue(null, CITY_ATTRIBUTE))
+                    .setDate(parser.getAttributeValue(null, DATE_ATTRIBUTE));
+
+            try {
+                while(parser.next() != XmlPullParser.END_TAG);
+            } catch (XmlPullParserException ignored) {
+                ignored.printStackTrace();
+            } catch (IOException ignored) {
+                ignored.printStackTrace();
+            }
+
+            return builder.build();
+        } else {
+            return null;
+        }
     }
 }
