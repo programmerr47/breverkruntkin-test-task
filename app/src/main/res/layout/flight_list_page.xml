@@ -7,12 +7,25 @@
     android:paddingRight="@dimen/default_horizontal_margin"
     android:paddingTop="@dimen/default_horizontal_margin"
     android:paddingBottom="@dimen/default_vertical_margin"
+    android:background="@color/gray_light_very"
     tools:context=".FlightListActivity">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/gray_dark_very_transparent_light"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@color/white_pure">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_landing"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="testikiki"
+            android:textColor="@color/gray_dark_very_transparent_light"/>
+        </FrameLayout>
 
 </RelativeLayout>
