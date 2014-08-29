@@ -1,9 +1,11 @@
-package cleverpumpkintesttask.programmerr47.github.com.flightsviewer;
+package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.R;
 
 
 public class FlightListActivity extends ActionBarActivity {
@@ -11,7 +13,7 @@ public class FlightListActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.flight_list_page);
+        setContentView(R.layout.flight_list_page_body);
     }
 
 

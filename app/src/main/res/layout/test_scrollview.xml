@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_light_very">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white_pure">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher"
+            android:adjustViewBounds="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:padding="16dp"
+            android:orientation="horizontal"
+            android:background="@color/gray_light_very">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Рейс предоставлен компанией AstroAero Airlines"
+                android:singleLine="true"
+                android:textColor="@color/gray_dark_very_transparent_semi"
+                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Schedule"
+            android:textColor="@color/gray_dark_very_transparent_light"
+            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TableRow
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_marginRight="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_takeoff"/>
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="00:00"
+                    android:textColor="@color/gray_dark_very_transparent_light"
+                    android:textSize="30sp"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="1812-01-01"
+                        android:textColor="@color/gray_dark_very_transparent_semi"
+                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Астрахань"
+                        android:textColor="@color/gray_dark_very_transparent_semi"
+                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_marginRight="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_landing"/>
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="12:12"
+                    android:textColor="@color/gray_dark_very_transparent_light"
+                    android:textSize="30sp"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="3443-11-22"
+                        android:textColor="@color/gray_dark_very_transparent_semi"
+                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Шмастрахань"
+                        android:textColor="@color/gray_dark_very_transparent_semi"
+                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                </LinearLayout>
+
+            </TableRow>
+
+        </TableLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray_light_very"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="Description"
+            android:textColor="@color/gray_dark_very_transparent_light"
+            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Популярный и недорогой рейс, который используется для того, чтобы перевозить различный людей, у которых либо нет денег, либо они очень жестко экономят."
+            android:textColor="@color/gray_dark_very_transparent_semi"
+            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray_light_very"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="Additional Info"
+            android:textColor="@color/gray_dark_very_transparent_light"
+            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TableRow
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_marginRight="8dp"
+                    android:text="Flight number"
+                    android:textColor="@color/gray_dark_very_transparent_light"/>
+
+                <TextView
+                    android:layout_marginLeft="8dp"
+                    android:text="1023"
+                    android:gravity="left"
+                    android:textColor="@color/gray_dark_very_transparent_semi"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_marginRight="8dp"
+                    android:text="Type of plane"
+                    android:textColor="@color/gray_dark_very_transparent_light"/>
+
+                <TextView
+                    android:layout_marginLeft="8dp"
+                    android:text="320"
+                    android:gravity="left"
+                    android:textColor="@color/gray_dark_very_transparent_semi"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</ScrollView>
