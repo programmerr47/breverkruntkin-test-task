@@ -1,121 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginBottom="8dp"
-    android:orientation="vertical"
-    android:background="@color/white_pure">
+    android:background="@color/gray_light_very">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="16dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="Astro Flot"
-            android:singleLine="true"
-            android:textSize="18sp"
-            android:textColor="@color/gray_dark_very_transparent_light"/>
-
-        <View
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center_vertical"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="15 345.00 руб."
-            android:gravity="right"
-            android:singleLine="true"
-            android:textSize="18sp"
-            android:textColor="@color/orange_light"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:background="@color/white_pure">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/flightCarrier"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="Астрахань"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Astro Flot"
                 android:singleLine="true"
-                android:textColor="@color/gray_dark_very_transparent_semi"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                android:textSize="18sp"
+                android:textColor="@color/gray_dark_very_transparent_light"/>
 
             <TextView
+                android:id="@+id/flightPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="00:00, 1812-01-01"
+                android:layout_gravity="center_vertical"
+                android:text="@string/PRICE_VALUE"
+                android:gravity="right"
                 android:singleLine="true"
-                android:textColor="@color/gray_dark_very_transparent_semi"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                android:textSize="18sp"
+                android:textColor="@color/orange_light"/>
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/ic_flight_black"/>
-
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="8dp"
-            android:orientation="vertical">
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="Шмастрахань"
-                android:singleLine="true"
-                android:textColor="@color/gray_dark_very_transparent_semi"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
 
-            <TextView
+                <TextView
+                    android:id="@+id/takeoffCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="Астрахань"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_dark_very_transparent_semi"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                <TextView
+                    android:id="@+id/takeoffDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="00:00, 1812-01-01"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_dark_very_transparent_semi"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+            </LinearLayout>
+
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="12:12, 3443-11-22"
-                android:singleLine="true"
-                android:textColor="@color/gray_dark_very_transparent_semi"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_flight_black"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/landingCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="Шмастрахань"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_dark_very_transparent_semi"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                <TextView
+                    android:id="@+id/landingDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="12:12, 3443-11-22"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_dark_very_transparent_semi"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>

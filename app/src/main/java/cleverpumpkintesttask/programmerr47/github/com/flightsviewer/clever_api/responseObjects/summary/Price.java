@@ -1,6 +1,9 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 
 import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.util.XmlUtils;
 
@@ -50,6 +53,14 @@ public class Price {
             Builder builder = new Builder();
 
             double value = Double.parseDouble(XmlUtils.getText(parser));
+
+            try {
+                parser.nextTag();
+            } catch (XmlPullParserException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             if (XmlUtils.isCorrect(parser, XmlPullParser.END_TAG, null, TAG)) {
                 builder.setValue(value);

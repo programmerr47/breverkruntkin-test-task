@@ -2,7 +2,12 @@
 <resources>
 
     <string name="app_name">FlightsViewer</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="PRICE_VALUE">%1$s rub.</string>
+    <string name="SORT">Sort</string>
+    <string name="UNKNOWN_CARRIER">Unknown carrier</string>
+    <string name="UNKNOWN_CITY">Unknown city</string>
+    <string name="UNKNOWN_DATE">Unknown date</string>
+    <string name="UNKNOWN_PRICE">Unknown price</string>
 
 </resources>
