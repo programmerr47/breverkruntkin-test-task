@@ -313,6 +313,22 @@
 
                     <TextView
                         android:layout_marginRight="8dp"
+                        android:text="Flight duration"
+                        android:textColor="@color/gray_dark_very_transparent_light"/>
+
+                    <TextView
+                        android:layout_marginLeft="8dp"
+                        android:text="01:32"
+                        android:gravity="left"
+                        android:textColor="@color/gray_dark_very_transparent_semi"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:layout_marginRight="8dp"
                         android:text="Flight number"
                         android:textColor="@color/gray_dark_very_transparent_light"/>
 

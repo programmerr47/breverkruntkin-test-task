@@ -31,11 +31,11 @@ public class FlightsAdapter extends BindBaseAdapter {
 
     public FlightsAdapter(Context context, List<TripSummary> items) {
         if (context == null) {
-            throw new NullPointerException("Context must be not null");
+            throw new IllegalArgumentException("Context must be not null");
         }
 
         if (items == null) {
-            throw new NullPointerException("Items must be not null");
+            throw new IllegalArgumentException("Items must be not null");
         }
 
         mContext = context;
@@ -48,6 +48,7 @@ public class FlightsAdapter extends BindBaseAdapter {
         View view = inflater.inflate(FLIGHT_ITEM_ID, parent, false);
         ViewHolder holder = new ViewHolder();
 
+        holder.flightDuration = (TextView) view.findViewById(R.id.flightDuration);
         holder.flightCarrier = (TextView) view.findViewById(R.id.flightCarrier);
         holder.flightPrice = (TextView) view.findViewById(R.id.flightPrice);
         holder.takeoffCity = (TextView) view.findViewById(R.id.takeoffCity);
@@ -64,6 +65,12 @@ public class FlightsAdapter extends BindBaseAdapter {
     protected void bindView(View view, int position) {
         ViewHolder holder = (ViewHolder) view.getTag();
         TripSummary tripSummary = mItems.get(position);
+
+        if (tripSummary.getDuration() != null) {
+            holder.flightDuration.setText(tripSummary.getDuration());
+        } else {
+            holder.flightDuration.setText(R.string.UNKNOWN_DURATION);
+        }
 
         FlightInfo flightInfo = tripSummary.getFlight();
         if ((flightInfo != null) && (flightInfo.getCarrier() != null)) {
@@ -133,6 +140,7 @@ public class FlightsAdapter extends BindBaseAdapter {
     }
 
     public static class ViewHolder {
+        public TextView flightDuration;
         public TextView flightCarrier;
         public TextView flightPrice;
         public TextView takeoffCity;

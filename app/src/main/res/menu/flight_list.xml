@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".FlightListActivity" >
 
-    <item android:id="@+id/action_settings"
+    <item android:id="@+id/action_sort"
         android:title="@string/SORT"
         android:icon="@drawable/ic_action_sort_by_size"
         app:showAsAction="always" />

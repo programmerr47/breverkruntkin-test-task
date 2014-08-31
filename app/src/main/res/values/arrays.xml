@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="sorts">
+        <item>By duration</item>
+        <item>By price</item>
+    </array>
+</resources>
