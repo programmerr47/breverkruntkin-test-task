@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ADDITIONAL_INFO">Дополнительная информация</string>
+    <string name="ASCENDING">По возрастанию</string>
+    <string name="BUY_TICKET_RESULT">Поздравляем! Вы купили билет!</string>
+    <string name="CHECK_CONNECTION">Проверьте соединение с интернетом</string>
+    <string name="CHOOSE_SORT">Выберите тип сортировки</string>
+    <string name="DESCENDING">По убыванию</string>
+    <string name="DESCRIPTION">Описание</string>
+    <string name="FLIGHT_DURATION">Продолжительность рейса</string>
+    <string name="FLIGHT_N">Рейс №%1$s</string>
+    <string name="FLIGHT_NUMBER">Номер рейса</string>
+    <string name="FLIGHT_PROVIDED_BY">Рейс предоставлен компанией %1$s</string>
+    <string name="FLIGHTS_PAGE">Все рейсы</string>
+    <string name="LOADING_DESCRIPTION">Описание загружается</string>
+    <string name="PRICE">Цена</string>
+    <string name="PRICE_VALUE">%1$s руб.</string>
+    <string name="RUBLES">рублей</string>
+    <string name="SCHEDULE">Расписание</string>
+    <string name="SORT">Сортировка</string>
+    <string name="TYPE_OF_PLANE">Тип самолета</string>
+    <string name="UNKNOWN_CARRIER">Неизвестный перевозчик</string>
+    <string name="UNKNOWN_CITY">Неизвестный город</string>
+    <string name="UNKNOWN_DATE">Неизвестная дата</string>
+    <string name="UNKNOWN_DESCRIPTION">Неизвестное описание</string>
+    <string name="UNKNOWN_DURATION">Неизвестная продолжительность</string>
+    <string name="UNKNOWN_FLIGHT_NUMBER">Неизвестный номер рейса</string>
+    <string name="UNKNOWN_PRICE">Неизвестная цена</string>
+    <string name="UNKNOWN_PLANE_TYPE">Неизвестный тип самолета</string>
+    <string name="UNKNOWN_TIME">Неизвестное время</string>
+
+</resources>

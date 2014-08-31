@@ -18,9 +18,11 @@ import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.r
  * @author Michael Spitsin
  * @since 2014-08-31
  */
-public class FlightInfoActivity extends ActionBarActivity {
+public class FlightInfoActivity extends ActionBarActivity implements ViewPager.OnPageChangeListener {
     public static final String TRIP_SUMMARY_INFO = "TRIP_SUMMARY_INFO";
     public static final String CURRENT_OPENED_TRIP = "CURRENT_OPENED_TRIP";
+
+    private List<TripSummary> mSummaries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +31,38 @@ public class FlightInfoActivity extends ActionBarActivity {
         setContentView(R.layout.pager_layout);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        List<TripSummary> summaries = getSummariesFromParcelableExtra(getIntent().getParcelableArrayExtra(TRIP_SUMMARY_INFO));
+        mSummaries = getSummariesFromParcelableExtra(getIntent().getParcelableArrayExtra(TRIP_SUMMARY_INFO));
         int currentOpenedTripPosition = getIntent().getIntExtra(CURRENT_OPENED_TRIP, 0);
 
+        changeTitleByPosition(currentOpenedTripPosition);
+
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        pager.setAdapter(new FlightInfoPagerAdapter(getSupportFragmentManager(), summaries));
+        pager.setOnPageChangeListener(this);
+        pager.setAdapter(new FlightInfoPagerAdapter(getSupportFragmentManager(), mSummaries));
         pager.setCurrentItem(currentOpenedTripPosition);
+    }
+
+    @Override
+    public void onPageScrolled(int i, float v, int i2) {
+
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+        changeTitleByPosition(i);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+
+    }
+
+    private void changeTitleByPosition(int position) {
+        if ((mSummaries.get(position).getFlight() != null) && (mSummaries.get(position).getFlight().getNumber() != null)) {
+            setTitle(String.format(getString(R.string.FLIGHT_N), mSummaries.get(position).getFlight().getNumber()));
+        } else {
+            setTitle(String.format(getString(R.string.FLIGHT_N), "?"));
+        }
     }
 
     private List<TripSummary> getSummariesFromParcelableExtra(Parcelable[] parcelables) {

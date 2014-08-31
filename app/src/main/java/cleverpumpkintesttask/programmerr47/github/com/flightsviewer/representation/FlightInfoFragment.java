@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class FlightInfoFragment extends Fragment implements View.OnClickListener
     private Bitmap mFlightCoverBmp;
 
     private ImageView mFlightCover;
+    private TextView mCheckConnectionHint;
+    private ProgressBar mLoadingProgress;
     private TextView mFlightFrom;
     private TextView mFlightTo;
     private TextView mFlightCarrier;
@@ -79,6 +82,8 @@ public class FlightInfoFragment extends Fragment implements View.OnClickListener
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mFlightCover = (ImageView) view.findViewById(R.id.flightCover);
+        mCheckConnectionHint = (TextView) view.findViewById(R.id.checkConnectionHint);
+        mLoadingProgress = (ProgressBar) view.findViewById(R.id.loadingProgress);
         mFlightFrom = (TextView) view.findViewById(R.id.flightFrom);
         mFlightTo = (TextView) view.findViewById(R.id.flightTo);
         mFlightCarrier = (TextView) view.findViewById(R.id.flightCarrier);
@@ -108,6 +113,7 @@ public class FlightInfoFragment extends Fragment implements View.OnClickListener
             representFlightDuration(mSummaryInfo.getDuration());
             mFlightDescription.setText(R.string.LOADING_DESCRIPTION);
             mFlightCover.setVisibility(View.GONE);
+            mLoadingProgress.setVisibility(View.VISIBLE);
             loadFullInfo();
         } else {
             representTakeoffInfo(mFullInfo.getTakeoff());
@@ -120,11 +126,14 @@ public class FlightInfoFragment extends Fragment implements View.OnClickListener
             if (mFlightCoverBmp == null) {
                 loadFlightCover();
                 mFlightCover.setVisibility(View.GONE);
+                mLoadingProgress.setVisibility(View.VISIBLE);
             } else {
                 mFlightCover.setImageBitmap(mFlightCoverBmp);
                 mFlightCover.setVisibility(View.VISIBLE);
+                mLoadingProgress.setVisibility(View.GONE);
             }
         }
+        mCheckConnectionHint.setVisibility(View.GONE);
 
         mBuyTicketButton.setOnClickListener(this);
     }
@@ -162,8 +171,11 @@ public class FlightInfoFragment extends Fragment implements View.OnClickListener
                 representFlightInfo(mFullInfo.getFlight());
                 representFlightDuration(mFullInfo.getDuration());
                 representFlightDescription(mFullInfo.getDescription());
+                mCheckConnectionHint.setVisibility(View.GONE);
                 loadFlightCover();
             } else {
+                mCheckConnectionHint.setVisibility(View.VISIBLE);
+                mLoadingProgress.setVisibility(View.GONE);
                 mFlightDescription.setText(R.string.UNKNOWN_DESCRIPTION);
             }
         } else if (GetBitmapFromUrlTask.class.getName().equals(taskName)) {
@@ -178,6 +190,8 @@ public class FlightInfoFragment extends Fragment implements View.OnClickListener
             } else {
                 mFlightCover.setVisibility(View.GONE);
             }
+
+            mLoadingProgress.setVisibility(View.GONE);
         }
     }
 
@@ -261,7 +275,7 @@ public class FlightInfoFragment extends Fragment implements View.OnClickListener
 
     private void representPriceInfo(Price price) {
         if ((price != null) && (price.getValue() != 0.0)) {
-            mFlightPrice.setText(Util.convertPriceToString(price.getValue()));
+            mFlightPrice.setText(Util.convertPriceToString(getActivity(), price.getValue()));
         } else {
             mFlightPrice.setText(R.string.UNKNOWN_PRICE);
         }

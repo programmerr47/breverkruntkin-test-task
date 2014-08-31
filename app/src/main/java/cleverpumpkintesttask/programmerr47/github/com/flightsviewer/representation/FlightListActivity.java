@@ -14,7 +14,7 @@ public class FlightListActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_layout);
-
+        setTitle(R.string.FLIGHTS_PAGE);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);

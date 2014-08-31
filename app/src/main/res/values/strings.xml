@@ -6,6 +6,7 @@
     <string name="ADDITIONAL_INFO">Additional Info</string>
     <string name="ASCENDING">Ascending</string>
     <string name="BUY_TICKET_RESULT">You bought it! Congratulations!</string>
+    <string name="CHECK_CONNECTION">Check your internet connection</string>
     <string name="CHOOSE_SORT">Choose sorting</string>
     <string name="DESCENDING">Descending</string>
     <string name="DESCRIPTION">Description</string>

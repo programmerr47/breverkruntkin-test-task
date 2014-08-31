@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,6 +43,8 @@ public class FlightListFragment extends Fragment implements SwipeRefreshLayout.O
 
     private SwipeRefreshLayout mRefreshLayout;
     private ListView mTripListView;
+    private ProgressBar mLoadingProgress;
+
     private FlightsAdapter mTripAdapter;
 
     @Override
@@ -59,6 +63,7 @@ public class FlightListFragment extends Fragment implements SwipeRefreshLayout.O
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefresh);
         mTripListView = (ListView) view.findViewById(R.id.flightsListView);
+        mLoadingProgress = (ProgressBar) view.findViewById(R.id.loadingProgress);
     }
 
     @Override
@@ -74,10 +79,11 @@ public class FlightListFragment extends Fragment implements SwipeRefreshLayout.O
                 Collections.sort(mTrips, mTripSort.getComparator());
             }
             mTripAdapter = new FlightsAdapter(getActivity(), mTrips);
+            mLoadingProgress.setVisibility(View.GONE);
         } else {
             mTripAdapter = new FlightsAdapter(getActivity(), new ArrayList<TripSummary>());
 
-            mRefreshLayout.setRefreshing(true);
+            mLoadingProgress.setVisibility(View.VISIBLE);
             refreshList();
         }
 
@@ -122,9 +128,16 @@ public class FlightListFragment extends Fragment implements SwipeRefreshLayout.O
         if (GetTripsTask.class.getName().equals(taskName)) {
             if (extraObject != null) {
                 mTrips = (List<TripSummary>) extraObject;
-                resortList();
-            }
+            } else {
+                mTrips = new ArrayList<TripSummary>();
 
+                if (getActivity() != null) {
+                    Toast.makeText(getActivity(), R.string.CHECK_CONNECTION, Toast.LENGTH_LONG).show();
+                }
+            }
+            resortList();
+
+            mLoadingProgress.setVisibility(View.GONE);
             mRefreshLayout.setRefreshing(false);
         }
     }

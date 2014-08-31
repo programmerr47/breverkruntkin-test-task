@@ -10,7 +10,7 @@
     <cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation.view.ParallaxScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="@dimen/flight_page_top_spacing"
         android:orientation="vertical"
         android:background="@color/white_pure">
 
@@ -26,17 +26,33 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="@dimen/flight_cover_height"
                     android:src="@drawable/plane"
                     android:scaleType="centerCrop"/>
 
                 <ImageView
                     android:id="@+id/flightCover"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="@dimen/flight_cover_height"
                     android:src="@drawable/ic_launcher"
                     android:scaleType="centerCrop"
                     android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/checkConnectionHint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_vertical_margin"
+                    android:layout_gravity="center_horizontal|top"
+                    android:text="@string/CHECK_CONNECTION"
+                    android:textColor="@color/white_pure"
+                    style="@style/CleverTextSmall"/>
+
+                <ProgressBar
+                    android:id="@+id/loadingProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -49,16 +65,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginRight="@dimen/default_horizontal_margin_half"
                         android:text="Астрахань"
                         android:gravity="right"
                         android:singleLine="true"
                         android:textColor="@color/white_pure"
-                        android:textSize="24sp"/>
+                        style="@style/CleverTextLarge"/>
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/icon_small"
+                        android:layout_height="@dimen/icon_small"
                         android:src="@drawable/ic_flight"/>
 
                     <TextView
@@ -66,12 +82,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="@dimen/default_horizontal_margin_half"
                         android:text="Шмастрахань"
                         android:gravity="left"
                         android:singleLine="true"
                         android:textColor="@color/white_pure"
-                        android:textSize="24sp"/>
+                        style="@style/CleverTextLarge"/>
 
                 </LinearLayout>
 
@@ -79,9 +95,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
+                android:layout_height="@dimen/header_height"
+                android:paddingLeft="@dimen/default_horizontal_margin"
+                android:paddingRight="@dimen/default_horizontal_margin"
                 android:orientation="horizontal"
                 android:background="@color/gray_light_very">
 
@@ -93,7 +109,7 @@
                     android:text="@string/FLIGHT_PROVIDED_BY"
                     android:singleLine="true"
                     android:textColor="@color/gray_dark_very_transparent_semi"
-                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                    style="@style/CleverTextSmall"/>
 
             </LinearLayout>
 
@@ -107,27 +123,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="@dimen/default_horizontal_margin"
+                    android:layout_marginTop="@dimen/default_vertical_margin"
+                    android:layout_marginRight="@dimen/default_horizontal_margin"
+                    android:layout_marginBottom="@dimen/default_vertical_margin_half"
                     android:text="@string/PRICE"
                     android:textColor="@color/gray_dark_very_transparent_light"
-                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                    style="@style/CleverTextMedium"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="@dimen/default_horizontal_margin"
+                    android:layout_marginTop="@dimen/default_vertical_margin_half"
+                    android:layout_marginRight="@dimen/default_horizontal_margin"
+                    android:layout_marginBottom="@dimen/default_horizontal_margin"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_width="@dimen/icon_large"
+                        android:layout_height="@dimen/icon_large"
+                        android:layout_marginRight="@dimen/default_horizontal_margin_half"
                         android:scaleType="centerInside"
                         android:src="@drawable/ic_price" />
 
@@ -136,28 +152,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="@dimen/default_horizontal_margin_half"
+                        android:layout_marginRight="@dimen/default_horizontal_margin_half"
                         android:text="15 443.00"
                         android:textColor="@color/gray_dark_very_transparent_light"
-                        android:textSize="30sp"
-                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                        style="@style/CleverTextHuge"/>
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="@dimen/default_horizontal_margin_half"
                         android:layout_gravity="center_vertical"
                         android:text="@string/RUBLES"
                         android:textColor="@color/gray_dark_very_transparent_semi"
-                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                        style="@style/CleverTextSmall"/>
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/elements_divider_height"
                     android:background="@color/gray_light_very"/>
 
             </LinearLayout>
@@ -172,43 +187,42 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="@dimen/default_horizontal_margin"
+                    android:layout_marginTop="@dimen/default_vertical_margin"
+                    android:layout_marginRight="@dimen/default_horizontal_margin"
+                    android:layout_marginBottom="@dimen/default_vertical_margin_half"
                     android:text="@string/SCHEDULE"
                     android:textColor="@color/gray_dark_very_transparent_light"
-                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                    style="@style/CleverTextMedium"/>
 
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginLeft="@dimen/default_horizontal_margin"
+                    android:layout_marginTop="@dimen/default_vertical_margin_half"
+                    android:layout_marginRight="@dimen/default_horizontal_margin"
+                    android:layout_marginBottom="@dimen/default_vertical_margin">
 
                     <TableRow
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="@dimen/default_vertical_margin_half">
 
                         <ImageView
-                            android:layout_marginRight="8dp"
+                            android:layout_marginRight="@dimen/default_horizontal_margin_half"
                             android:scaleType="centerInside"
                             android:src="@drawable/ic_takeoff"/>
 
                         <TextView
                             android:id="@+id/takeoffTime"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginRight="8dp"
+                            android:layout_marginLeft="@dimen/default_horizontal_margin_half"
+                            android:layout_marginRight="@dimen/default_horizontal_margin_half"
                             android:text="00:00"
                             android:textColor="@color/gray_dark_very_transparent_light"
-                            android:textSize="30sp"
-                            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                            style="@style/CleverTextHuge"/>
 
                         <LinearLayout
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
+                            android:layout_marginLeft="@dimen/default_horizontal_margin_half"
                             android:orientation="vertical">
 
                             <TextView
@@ -218,7 +232,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="1812-01-01"
                                 android:textColor="@color/gray_dark_very_transparent_semi"
-                                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                                style="@style/CleverTextSmall"/>
 
                             <TextView
                                 android:id="@+id/takeoffCity"
@@ -227,33 +241,32 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="Астрахань"
                                 android:textColor="@color/gray_dark_very_transparent_semi"
-                                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                                style="@style/CleverTextSmall"/>
 
                         </LinearLayout>
 
                     </TableRow>
 
                     <TableRow
-                        android:layout_marginTop="8dp">
+                        android:layout_marginTop="@dimen/default_vertical_margin_half">
 
                         <ImageView
-                            android:layout_marginRight="8dp"
+                            android:layout_marginRight="@dimen/default_horizontal_margin_half"
                             android:scaleType="centerInside"
                             android:src="@drawable/ic_landing"/>
 
                         <TextView
                             android:id="@+id/landingTime"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginRight="8dp"
+                            android:layout_marginLeft="@dimen/default_horizontal_margin_half"
+                            android:layout_marginRight="@dimen/default_horizontal_margin_half"
                             android:text="12:12"
                             android:textColor="@color/gray_dark_very_transparent_light"
-                            android:textSize="30sp"
-                            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                            style="@style/CleverTextHuge"/>
 
                         <LinearLayout
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
+                            android:layout_marginLeft="@dimen/default_horizontal_margin_half"
                             android:orientation="vertical">
 
                             <TextView
@@ -263,7 +276,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="3443-11-22"
                                 android:textColor="@color/gray_dark_very_transparent_semi"
-                                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                                style="@style/CleverTextSmall"/>
 
                             <TextView
                                 android:id="@+id/landingCity"
@@ -272,7 +285,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="Шмастрахань"
                                 android:textColor="@color/gray_dark_very_transparent_semi"
-                                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                                style="@style/CleverTextSmall"/>
 
                         </LinearLayout>
 
@@ -282,7 +295,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/elements_divider_height"
                     android:background="@color/gray_light_very"/>
 
             </LinearLayout>
@@ -297,29 +310,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="@dimen/default_horizontal_margin"
+                    android:layout_marginTop="@dimen/default_vertical_margin"
+                    android:layout_marginRight="@dimen/default_horizontal_margin"
+                    android:layout_marginBottom="@dimen/small_vertical_margin"
                     android:text="@string/DESCRIPTION"
                     android:textColor="@color/gray_dark_very_transparent_light"
-                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                    style="@style/CleverTextMedium"/>
 
                 <TextView
                     android:id="@+id/flightDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="@dimen/default_horizontal_margin"
+                    android:layout_marginTop="@dimen/small_vertical_margin"
+                    android:layout_marginRight="@dimen/default_horizontal_margin"
+                    android:layout_marginBottom="@dimen/default_vertical_margin"
                     android:text="Популярный и недорогой рейс, который используется для того, чтобы перевозить различный людей, у которых либо нет денег, либо они очень жестко экономят."
                     android:textColor="@color/gray_dark_very_transparent_semi"
-                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                    style="@style/CleverTextSmall"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/elements_divider_height"
                     android:background="@color/gray_light_very"/>
 
             </LinearLayout>
@@ -334,74 +347,80 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="@dimen/default_horizontal_margin"
+                    android:layout_marginTop="@dimen/default_vertical_margin"
+                    android:layout_marginRight="@dimen/default_horizontal_margin"
+                    android:layout_marginBottom="@dimen/small_vertical_margin"
                     android:text="@string/ADDITIONAL_INFO"
                     android:textColor="@color/gray_dark_very_transparent_light"
-                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                    style="@style/CleverTextMedium"/>
 
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginLeft="@dimen/default_horizontal_margin"
+                    android:layout_marginTop="@dimen/small_vertical_margin"
+                    android:layout_marginRight="@dimen/default_horizontal_margin"
+                    android:layout_marginBottom="@dimen/default_vertical_margin">
 
                     <TableRow
-                        android:layout_marginBottom="4dp">
+                        android:layout_marginBottom="@dimen/small_vertical_margin">
 
                         <TextView
-                            android:layout_marginRight="8dp"
+                            android:layout_marginRight="@dimen/default_horizontal_margin_half"
                             android:text="@string/FLIGHT_DURATION"
-                            android:textColor="@color/gray_dark_very_transparent_light"/>
+                            android:textColor="@color/gray_dark_very_transparent_light"
+                            style="@style/CleverTextSmall"/>
 
                         <TextView
                             android:id="@+id/flightDuration"
-                            android:layout_marginLeft="8dp"
+                            android:layout_marginLeft="@dimen/default_horizontal_margin_half"
                             android:text="01:32"
                             android:singleLine="true"
                             android:gravity="left"
-                            android:textColor="@color/gray_dark_very_transparent_semi"/>
+                            android:textColor="@color/gray_dark_very_transparent_semi"
+                            style="@style/CleverTextSmall"/>
 
                     </TableRow>
 
                     <TableRow
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp">
+                        android:layout_marginTop="@dimen/small_vertical_margin"
+                        android:layout_marginBottom="@dimen/small_vertical_margin">
 
                         <TextView
-                            android:layout_marginRight="8dp"
+                            android:layout_marginRight="@dimen/default_horizontal_margin_half"
                             android:text="@string/FLIGHT_NUMBER"
-                            android:textColor="@color/gray_dark_very_transparent_light"/>
+                            android:textColor="@color/gray_dark_very_transparent_light"
+                            style="@style/CleverTextSmall"/>
 
                         <TextView
                             android:id="@+id/flightNumber"
-                            android:layout_marginLeft="8dp"
+                            android:layout_marginLeft="@dimen/default_horizontal_margin_half"
                             android:text="1023"
                             android:singleLine="true"
                             android:gravity="left"
-                            android:textColor="@color/gray_dark_very_transparent_semi"/>
+                            android:textColor="@color/gray_dark_very_transparent_semi"
+                            style="@style/CleverTextSmall"/>
 
                     </TableRow>
 
                     <TableRow
-                        android:layout_marginTop="4dp">
+                        android:layout_marginTop="@dimen/small_vertical_margin">
 
                         <TextView
-                            android:layout_marginRight="8dp"
+                            android:layout_marginRight="@dimen/default_horizontal_margin_half"
                             android:text="@string/TYPE_OF_PLANE"
-                            android:textColor="@color/gray_dark_very_transparent_light"/>
+                            android:textColor="@color/gray_dark_very_transparent_light"
+                            style="@style/CleverTextSmall"/>
 
                         <TextView
                             android:id="@+id/typeOfPlane"
-                            android:layout_marginLeft="8dp"
+                            android:layout_marginLeft="@dimen/default_horizontal_margin_half"
                             android:text="320"
                             android:singleLine="true"
                             android:gravity="left"
-                            android:textColor="@color/gray_dark_very_transparent_semi"/>
+                            android:textColor="@color/gray_dark_very_transparent_semi"
+                            style="@style/CleverTextSmall"/>
 
                     </TableRow>
 
@@ -418,8 +437,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:padding="8dp"
+        android:layout_margin="@dimen/default_margin"
+        android:padding="@dimen/default_padding"
         android:src="@drawable/ic_fab_buy"
         app:fab_colorNormal="@color/orange_light"
         app:fab_colorPressed="@color/orange_pure"

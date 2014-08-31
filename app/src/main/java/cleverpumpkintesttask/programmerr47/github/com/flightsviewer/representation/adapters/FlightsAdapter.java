@@ -81,7 +81,7 @@ public class FlightsAdapter extends BindBaseAdapter {
 
         Price price = tripSummary.getPrice();
         if ((price != null) && (price.getValue() != 0.0)) {
-            holder.flightPrice.setText(String.format(mContext.getString(R.string.PRICE_VALUE), Util.convertPriceToString(price.getValue())));
+            holder.flightPrice.setText(String.format(mContext.getString(R.string.PRICE_VALUE), Util.convertPriceToString(mContext, price.getValue())));
         } else {
             holder.flightPrice.setText(R.string.UNKNOWN_PRICE);
         }
