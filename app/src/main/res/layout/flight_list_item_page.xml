@@ -2,12 +2,12 @@
 
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/violet_dark">
 
-    <ScrollView
+    <cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation.view.ParallaxScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="2dp"
@@ -31,6 +31,7 @@
                     android:scaleType="centerCrop"/>
 
                 <ImageView
+                    android:id="@+id/flightCover"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:src="@drawable/ic_launcher"
@@ -44,6 +45,7 @@
                     android:layout_gravity="bottom|center_horizontal">
 
                     <TextView
+                        android:id="@+id/flightFrom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -60,6 +62,7 @@
                         android:src="@drawable/ic_flight"/>
 
                     <TextView
+                        android:id="@+id/flightTo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -83,296 +86,343 @@
                 android:background="@color/gray_light_very">
 
                 <TextView
+                    android:id="@+id/flightCarrier"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="Рейс предоставлен компанией AstroAero Airlines"
+                    android:text="@string/FLIGHT_PROVIDED_BY"
                     android:singleLine="true"
                     android:textColor="@color/gray_dark_very_transparent_semi"
                     style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="Price"
-                android:textColor="@color/gray_dark_very_transparent_light"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                android:orientation="vertical"
+                android:background="@color/white_pure">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/PRICE"
+                    android:textColor="@color/gray_dark_very_transparent_light"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginRight="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_price" />
+
+                    <TextView
+                        android:id="@+id/flightPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="15 443.00"
+                        android:textColor="@color/gray_dark_very_transparent_light"
+                        android:textSize="30sp"
+                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/RUBLES"
+                        android:textColor="@color/gray_dark_very_transparent_semi"
+                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light_very"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginRight="8dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_price" />
+                android:orientation="vertical"
+                android:background="@color/white_pure">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:text="15 443.00"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/SCHEDULE"
                     android:textColor="@color/gray_dark_very_transparent_light"
-                    android:textSize="30sp"
                     style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
 
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <TableLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_gravity="center_vertical"
-                    android:text="рублей"
-                    android:textColor="@color/gray_dark_very_transparent_semi"
-                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TableRow
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_marginRight="8dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_takeoff"/>
+
+                        <TextView
+                            android:id="@+id/takeoffTime"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:text="00:00"
+                            android:textColor="@color/gray_dark_very_transparent_light"
+                            android:textSize="30sp"
+                            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+                        <LinearLayout
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/takeoffDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="1812-01-01"
+                                android:textColor="@color/gray_dark_very_transparent_semi"
+                                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                            <TextView
+                                android:id="@+id/takeoffCity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="Астрахань"
+                                android:textColor="@color/gray_dark_very_transparent_semi"
+                                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                        </LinearLayout>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_marginTop="8dp">
+
+                        <ImageView
+                            android:layout_marginRight="8dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_landing"/>
+
+                        <TextView
+                            android:id="@+id/landingTime"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:text="12:12"
+                            android:textColor="@color/gray_dark_very_transparent_light"
+                            android:textSize="30sp"
+                            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+                        <LinearLayout
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/landingDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="3443-11-22"
+                                android:textColor="@color/gray_dark_very_transparent_semi"
+                                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                            <TextView
+                                android:id="@+id/landingCity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="Шмастрахань"
+                                android:textColor="@color/gray_dark_very_transparent_semi"
+                                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+
+                        </LinearLayout>
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light_very"/>
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray_light_very"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="Schedule"
-                android:textColor="@color/gray_dark_very_transparent_light"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
-
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp">
+                android:orientation="vertical"
+                android:background="@color/white_pure">
 
-                <TableRow
-                    android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/DESCRIPTION"
+                    android:textColor="@color/gray_dark_very_transparent_light"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
 
-                    <ImageView
-                        android:layout_marginRight="8dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_takeoff"/>
+                <TextView
+                    android:id="@+id/flightDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Популярный и недорогой рейс, который используется для того, чтобы перевозить различный людей, у которых либо нет денег, либо они очень жестко экономят."
+                    android:textColor="@color/gray_dark_very_transparent_semi"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
 
-                    <TextView
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:text="00:00"
-                        android:textColor="@color/gray_dark_very_transparent_light"
-                        android:textSize="30sp"
-                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light_very"/>
 
-                    <LinearLayout
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"
-                        android:orientation="vertical">
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white_pure">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/ADDITIONAL_INFO"
+                    android:textColor="@color/gray_dark_very_transparent_light"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TableRow
+                        android:layout_marginBottom="4dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="1812-01-01"
-                            android:textColor="@color/gray_dark_very_transparent_semi"
-                            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                            android:layout_marginRight="8dp"
+                            android:text="@string/FLIGHT_DURATION"
+                            android:textColor="@color/gray_dark_very_transparent_light"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="Астрахань"
-                            android:textColor="@color/gray_dark_very_transparent_semi"
-                            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                            android:id="@+id/flightDuration"
+                            android:layout_marginLeft="8dp"
+                            android:text="01:32"
+                            android:singleLine="true"
+                            android:gravity="left"
+                            android:textColor="@color/gray_dark_very_transparent_semi"/>
 
-                    </LinearLayout>
+                    </TableRow>
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_marginTop="8dp">
-
-                    <ImageView
-                        android:layout_marginRight="8dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_landing"/>
-
-                    <TextView
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:text="12:12"
-                        android:textColor="@color/gray_dark_very_transparent_light"
-                        android:textSize="30sp"
-                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
-
-                    <LinearLayout
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp"
-                        android:orientation="vertical">
+                    <TableRow
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="3443-11-22"
-                            android:textColor="@color/gray_dark_very_transparent_semi"
-                            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                            android:layout_marginRight="8dp"
+                            android:text="@string/FLIGHT_NUMBER"
+                            android:textColor="@color/gray_dark_very_transparent_light"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="Шмастрахань"
-                            android:textColor="@color/gray_dark_very_transparent_semi"
-                            style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                            android:id="@+id/flightNumber"
+                            android:layout_marginLeft="8dp"
+                            android:text="1023"
+                            android:singleLine="true"
+                            android:gravity="left"
+                            android:textColor="@color/gray_dark_very_transparent_semi"/>
 
-                    </LinearLayout>
+                    </TableRow>
 
-                </TableRow>
+                    <TableRow
+                        android:layout_marginTop="4dp">
 
-            </TableLayout>
+                        <TextView
+                            android:layout_marginRight="8dp"
+                            android:text="@string/TYPE_OF_PLANE"
+                            android:textColor="@color/gray_dark_very_transparent_light"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray_light_very"/>
+                        <TextView
+                            android:id="@+id/typeOfPlane"
+                            android:layout_marginLeft="8dp"
+                            android:text="320"
+                            android:singleLine="true"
+                            android:gravity="left"
+                            android:textColor="@color/gray_dark_very_transparent_semi"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="4dp"
-                android:text="Description"
-                android:textColor="@color/gray_dark_very_transparent_light"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
+                    </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Популярный и недорогой рейс, который используется для того, чтобы перевозить различный людей, у которых либо нет денег, либо они очень жестко экономят."
-                android:textColor="@color/gray_dark_very_transparent_semi"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
+                </TableLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray_light_very"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="4dp"
-                android:text="Additional Info"
-                android:textColor="@color/gray_dark_very_transparent_light"
-                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"/>
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp">
-
-                <TableRow
-                    android:layout_marginBottom="4dp">
-
-                    <TextView
-                        android:layout_marginRight="8dp"
-                        android:text="Flight duration"
-                        android:textColor="@color/gray_dark_very_transparent_light"/>
-
-                    <TextView
-                        android:layout_marginLeft="8dp"
-                        android:text="01:32"
-                        android:gravity="left"
-                        android:textColor="@color/gray_dark_very_transparent_semi"/>
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_marginBottom="4dp">
-
-                    <TextView
-                        android:layout_marginRight="8dp"
-                        android:text="Flight number"
-                        android:textColor="@color/gray_dark_very_transparent_light"/>
-
-                    <TextView
-                        android:layout_marginLeft="8dp"
-                        android:text="1023"
-                        android:gravity="left"
-                        android:textColor="@color/gray_dark_very_transparent_semi"/>
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_marginTop="4dp">
-
-                    <TextView
-                        android:layout_marginRight="8dp"
-                        android:text="Type of plane"
-                        android:textColor="@color/gray_dark_very_transparent_light"/>
-
-                    <TextView
-                        android:layout_marginLeft="8dp"
-                        android:text="320"
-                        android:gravity="left"
-                        android:textColor="@color/gray_dark_very_transparent_semi"/>
-
-                </TableRow>
-
-            </TableLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
-    </ScrollView>
+    </cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation.view.ParallaxScrollView>
 
     <cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation.view.FloatingActionButton
+        android:id="@+id/buyTicketButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:padding="8dp"
         android:src="@drawable/ic_fab_buy"
-        fab:fab_colorNormal="@color/orange_light"
-        fab:fab_colorPressed="@color/orange_pure"
-        fab:fab_type="normal"/>
-    <!--  android:text="14.000 руб"
-      android:textColor="@color/white_transparent_light"-->
+        app:fab_colorNormal="@color/orange_light"
+        app:fab_colorPressed="@color/orange_pure"
+        app:fab_type="normal"/>
 
 </FrameLayout>

@@ -1,5 +1,8 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -12,8 +15,20 @@ import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.u
  * @since 2014-08-27
  */
 @SuppressWarnings("unused")
-public class Price {
+public class Price implements Parcelable {
     public static final String TAG = "price";
+
+    public static Creator<Price> CREATOR = new Creator<Price>() {
+        @Override
+        public Price createFromParcel(Parcel source) {
+            return new Price(source);
+        }
+
+        @Override
+        public Price[] newArray(int size) {
+            return new Price[0];
+        }
+    };
 
     private double value;
 
@@ -21,8 +36,22 @@ public class Price {
         this.value = builder.value;
     }
 
+    private Price(Parcel in) {
+        this.value = in.readDouble();
+    }
+
     public double getValue() {
         return value;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;//TODO figure out how to act with this stuff
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeDouble(value);
     }
 
     public static class Builder {

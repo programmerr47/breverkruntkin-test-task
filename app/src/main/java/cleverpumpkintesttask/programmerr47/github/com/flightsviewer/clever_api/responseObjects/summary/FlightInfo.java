@@ -1,5 +1,8 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -12,12 +15,24 @@ import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.u
  * @since 2014-08-27
  */
 @SuppressWarnings("unused")
-public class FlightInfo {
+public class FlightInfo implements Parcelable{
     public static final String TAG = "flight";
     //----------------------ATTRUBITES---------------------------//
     private static final String CARRIER_ATTRIBUTE = "carrier";
     private static final String NUMBER_ATTRIBUTE = "number";
     private static final String EQ_ATTRIBUTE = "eq";
+
+    public static Creator<FlightInfo> CREATOR = new Creator<FlightInfo>() {
+        @Override
+        public FlightInfo createFromParcel(Parcel source) {
+            return new FlightInfo(source);
+        }
+
+        @Override
+        public FlightInfo[] newArray(int size) {
+            return new FlightInfo[0];
+        }
+    };
 
     private String carrier;
     private String number;
@@ -27,6 +42,12 @@ public class FlightInfo {
         this.carrier = builder.carrier;
         this.number = builder.number;
         this.eq = builder.eq;
+    }
+
+    private FlightInfo(Parcel in) {
+        this.carrier = in.readString();
+        this.number = in.readString();
+        this.eq = in.readString();
     }
 
     public String getCarrier() {
@@ -39,6 +60,18 @@ public class FlightInfo {
 
     public String getEq() {
         return eq;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;//TODO figure out how to act with this stuff
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(carrier);
+        out.writeString(number);
+        out.writeString(eq);
     }
 
     public static class Builder {

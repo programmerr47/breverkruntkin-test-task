@@ -1,5 +1,8 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -12,13 +15,25 @@ import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.u
  * @since 2014-08-27
  */
 @SuppressWarnings("unused")
-public class FlightPoint {
+public class FlightPoint implements Parcelable{
     public static final String TAKEOF_TAG = "takeoff";
     public static final String LANDING_TAG = "landing";
     //----------------------ATTRUBITES---------------------------//
     private static final String DATE_ATTRIBUTE = "date";
     private static final String TIME_ATTRIBUTE = "time";
     private static final String CITY_ATTRIBUTE = "city";
+
+    public static Creator<FlightPoint> CREATOR = new Creator<FlightPoint>() {
+        @Override
+        public FlightPoint createFromParcel(Parcel source) {
+            return new FlightPoint(source);
+        }
+
+        @Override
+        public FlightPoint[] newArray(int size) {
+            return new FlightPoint[0];
+        }
+    };
 
     private String date;
     private String time;
@@ -28,6 +43,12 @@ public class FlightPoint {
         this.date = builder.date;
         this.time = builder.time;
         this.city = builder.city;
+    }
+
+    private FlightPoint(Parcel in) {
+        this.date = in.readString();
+        this.time = in.readString();
+        this.city = in.readString();
     }
 
     public String getDate() {
@@ -40,6 +61,18 @@ public class FlightPoint {
 
     public String getCity() {
         return city;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;//TODO figure out how to act with this stuff
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(date);
+        out.writeString(time);
+        out.writeString(city);
     }
 
     public static class Builder {

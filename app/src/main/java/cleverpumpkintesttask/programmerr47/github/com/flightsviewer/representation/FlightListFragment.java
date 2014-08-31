@@ -3,6 +3,7 @@ package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representat
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representati
  * @author Michael Spitsin
  * @since 2014-08-30
  */
-public class FlightListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AsyncTaskWithListener.OnTaskFinishedListener {
+public class FlightListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AsyncTaskWithListener.OnTaskFinishedListener, AdapterView.OnItemClickListener {
 
     private List<TripSummary> mTrips;
     private GetTripsTask mGetTripsTask;
@@ -68,7 +70,9 @@ public class FlightListFragment extends Fragment implements SwipeRefreshLayout.O
         mRefreshLayout.setOnRefreshListener(this);
 
         if (mTrips != null) {
-            Collections.sort(mTrips, mTripSort.getComparator());
+            if (mTripSort.getComparator() != null) {
+                Collections.sort(mTrips, mTripSort.getComparator());
+            }
             mTripAdapter = new FlightsAdapter(getActivity(), mTrips);
         } else {
             mTripAdapter = new FlightsAdapter(getActivity(), new ArrayList<TripSummary>());
@@ -78,6 +82,7 @@ public class FlightListFragment extends Fragment implements SwipeRefreshLayout.O
         }
 
         mTripListView.setAdapter(mTripAdapter);
+        mTripListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -124,6 +129,14 @@ public class FlightListFragment extends Fragment implements SwipeRefreshLayout.O
         }
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getActivity(), FlightInfoActivity.class);
+        intent.putExtra(FlightInfoActivity.TRIP_SUMMARY_INFO, mTrips.toArray(new TripSummary[mTrips.size()]));
+        intent.putExtra(FlightInfoActivity.CURRENT_OPENED_TRIP, position);
+        getActivity().startActivity(intent);
+    }
+
     private void refreshList() {
         mGetTripsTask = new GetTripsTask();
         mGetTripsTask.setOnTaskFinishedListener(this);
@@ -156,7 +169,7 @@ public class FlightListFragment extends Fragment implements SwipeRefreshLayout.O
             numberOfSorting = -1;
         }
 
-        AlertDialog dialog = new AlertDialog.Builder(context)
+        new AlertDialog.Builder(context)
                 .setSingleChoiceItems(R.array.sorts, numberOfSorting, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

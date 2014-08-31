@@ -3,15 +3,32 @@
 
     <string name="app_name">FlightsViewer</string>
 
+    <string name="ADDITIONAL_INFO">Additional Info</string>
     <string name="ASCENDING">Ascending</string>
+    <string name="BUY_TICKET_RESULT">You bought it! Congratulations!</string>
     <string name="CHOOSE_SORT">Choose sorting</string>
     <string name="DESCENDING">Descending</string>
+    <string name="DESCRIPTION">Description</string>
+    <string name="FLIGHT_DURATION">Flight Duration</string>
+    <string name="FLIGHT_N">Flight N%1$s</string>
+    <string name="FLIGHT_NUMBER">Flight Number</string>
+    <string name="FLIGHT_PROVIDED_BY">Flight provided by %1$s</string>
+    <string name="FLIGHTS_PAGE">All flights</string>
+    <string name="LOADING_DESCRIPTION">Loading description</string>
+    <string name="PRICE">Price</string>
     <string name="PRICE_VALUE">%1$s rub.</string>
+    <string name="RUBLES">rubles</string>
+    <string name="SCHEDULE">Schedule</string>
     <string name="SORT">Sort</string>
+    <string name="TYPE_OF_PLANE">Type of Plane</string>
     <string name="UNKNOWN_CARRIER">Unknown carrier</string>
     <string name="UNKNOWN_CITY">Unknown city</string>
     <string name="UNKNOWN_DATE">Unknown date</string>
+    <string name="UNKNOWN_DESCRIPTION">Unknown description</string>
     <string name="UNKNOWN_DURATION">Unknown duration</string>
+    <string name="UNKNOWN_FLIGHT_NUMBER">Unknown flight number</string>
     <string name="UNKNOWN_PRICE">Unknown price</string>
+    <string name="UNKNOWN_PLANE_TYPE">Unknown type of plane</string>
+    <string name="UNKNOWN_TIME">Unknown time</string>
 
 </resources>

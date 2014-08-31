@@ -1,5 +1,8 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects.summary;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -14,7 +17,7 @@ import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.u
  * @since 2014-08-27
  */
 @SuppressWarnings("unused")
-public class TripSummary {
+public class TripSummary implements Parcelable{
     public static final String TAG = "trip";
     //----------------------ATTRUBITES---------------------------//
     private static final String DURATION_ATTRIBUTE = "duration";
@@ -24,6 +27,18 @@ public class TripSummary {
     private static final String FLIGHT_TAG = "flight";
     private static final String PRICE_TAG = "price";
     private static final String DESCRIPTION_TAG = "description";
+
+    public static Creator<TripSummary> CREATOR = new Creator<TripSummary>() {
+        @Override
+        public TripSummary createFromParcel(Parcel source) {
+            return new TripSummary(source);
+        }
+
+        @Override
+        public TripSummary[] newArray(int size) {
+            return new TripSummary[0];
+        }
+    };
 
     private String duration;
     private FlightPoint takeoff;
@@ -37,6 +52,14 @@ public class TripSummary {
         this.landing = builder.landing;
         this.flight = builder.flight;
         this.price = builder.price;
+    }
+
+    private TripSummary(Parcel in) {
+        this.duration = in.readString();
+        this.takeoff = in.readParcelable(FlightPoint.class.getClassLoader());
+        this.landing = in.readParcelable(FlightPoint.class.getClassLoader());
+        this.flight = in.readParcelable(FlightInfo.class.getClassLoader());
+        this.price = in.readParcelable(Price.class.getClassLoader());
     }
 
     public String getDuration() {
@@ -57,6 +80,20 @@ public class TripSummary {
 
     public Price getPrice() {
         return price;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;//TODO figure out how to act with this stuff
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(duration);
+        out.writeParcelable(takeoff, flags);
+        out.writeParcelable(landing, flags);
+        out.writeParcelable(flight, flags);
+        out.writeParcelable(price, flags);
     }
 
     public static class Builder {

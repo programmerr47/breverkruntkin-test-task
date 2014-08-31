@@ -9,16 +9,25 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+
         <activity
             android:name=".representation.FlightListActivity"
-            android:label="@string/app_name" >
+            android:label="@string/FLIGHTS_PAGE">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".representation.FlightInfoActivity"
+            android:parentActivityName=".representation.FlightListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation.FlightListActivity"/>
+        </activity>
+
     </application>
 
 </manifest>

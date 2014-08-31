@@ -13,7 +13,7 @@ public class FlightListActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.flight_list_page);
+        setContentView(R.layout.fragment_layout);
 
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

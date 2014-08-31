@@ -1,5 +1,8 @@
 package cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.responseObjects;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -18,7 +21,7 @@ import cleverpumpkintesttask.programmerr47.github.com.flightsviewer.clever_api.u
  * @since 2014-08-27
  */
 @SuppressWarnings("unused")
-public class Trip {
+public class Trip implements Parcelable {
     public static final String TAG = "trip";
     //----------------------ATTRUBITES---------------------------//
     private static final String DURATION_ATTRIBUTE = "duration";
@@ -29,6 +32,18 @@ public class Trip {
     private static final String PRICE_TAG = "price";
     private static final String DESCRIPTION_TAG = "description";
     private static final String PHOTO_TAG = "photo";
+
+    public static Parcelable.Creator<Trip> CREATOR = new Parcelable.Creator<Trip>() {
+        @Override
+        public Trip createFromParcel(Parcel source) {
+            return new Trip(source);
+        }
+
+        @Override
+        public Trip[] newArray(int size) {
+            return new Trip[0];
+        }
+    };
 
     private String duration;
     private FlightPoint takeoff;
@@ -46,6 +61,16 @@ public class Trip {
         this.price = builder.price;
         this.description = builder.description;
         this.photo = builder.photo;
+    }
+
+    private Trip(Parcel in) {
+        this.duration = in.readString();
+        this.takeoff = in.readParcelable(FlightPoint.class.getClassLoader());
+        this.landing = in.readParcelable(FlightPoint.class.getClassLoader());
+        this.flight = in.readParcelable(FlightInfo.class.getClassLoader());
+        this.price = in.readParcelable(Price.class.getClassLoader());
+        this.description = in.readParcelable(Description.class.getClassLoader());
+        this.photo = in.readParcelable(Photo.class.getClassLoader());
     }
 
     public String getDuration() {
@@ -74,6 +99,22 @@ public class Trip {
 
     public Photo getPhoto() {
         return photo;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;//TODO figure out how to act with this stuff
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(duration);
+        out.writeParcelable(takeoff, flags);
+        out.writeParcelable(landing, flags);
+        out.writeParcelable(flight, flags);
+        out.writeParcelable(price, flags);
+        out.writeParcelable(description, flags);
+        out.writeParcelable(photo, flags);
     }
 
     public static class Builder {
