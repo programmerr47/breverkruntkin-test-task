@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/violet_dark">
 
-    <cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation.view.ParallaxScrollView
+    <com.github.programmerr47.cleverpumpkintesttask.flightsviewer.representation.view.ParallaxScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/flight_page_top_spacing"
@@ -430,9 +430,9 @@
 
         </LinearLayout>
 
-    </cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation.view.ParallaxScrollView>
+    </com.github.programmerr47.cleverpumpkintesttask.flightsviewer.representation.view.ParallaxScrollView>
 
-    <cleverpumpkintesttask.programmerr47.github.com.flightsviewer.representation.view.FloatingActionButton
+    <com.github.programmerr47.cleverpumpkintesttask.flightsviewer.representation.view.FloatingActionButton
         android:id="@+id/buyTicketButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
